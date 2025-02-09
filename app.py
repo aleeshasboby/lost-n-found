@@ -1,38 +1,38 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import os
 
 app = Flask(__name__)
 
-# Directory to store uploaded images
+# Directory to store uploaded files (images)
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Enable the file upload extension
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# List to store the reported items (in place of a database for simplicity)
-items = []
+# List to hold reported items (used in place of a database)
+reported_items = []
 
 @app.route('/')
 def index():
-    return "Welcome to the Lost and Found API!"
+    return "Welcome to the Lost & Found API!"
 
-# Route to handle the form submission
 @app.route('/submit_item', methods=['POST'])
 def submit_item():
+    # Get form data
     item_name = request.form.get('itemName')
     item_description = request.form.get('itemDescription')
     item_type = request.form.get('itemType')
     claimed = 'claimed' in request.form
-    image = request.files.get('itemImage')
+    item_image = request.files.get('itemImage')
 
-    # Save the image if it exists
+    # Save the image if it's uploaded
     image_filename = None
-    if image:
-        image_filename = os.path.join(app.config['UPLOAD_FOLDER'], image.filename)
-        image.save(image_filename)
+    if item_image:
+        image_filename = os.path.join(app.config['UPLOAD_FOLDER'], item_image.filename)
+        item_image.save(image_filename)
 
-    # Create a new item object
+    # Create a new item object to store the reported item
     new_item = {
         'name': item_name,
         'description': item_description,
@@ -40,14 +40,19 @@ def submit_item():
         'claimed': claimed,
         'image': image_filename
     }
-    items.append(new_item)
+    reported_items.append(new_item)
 
     return jsonify({"message": "Item reported successfully!", "item": new_item}), 200
 
-# Route to get all reported items
 @app.route('/items', methods=['GET'])
 def get_items():
-    return jsonify({"items": items}), 200
+    # Return the list of reported items as a JSON response
+    return jsonify({"items": reported_items}), 200
+
+# Endpoint to serve uploaded images
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 if __name__ == '__main__':
     app.run(debug=True)

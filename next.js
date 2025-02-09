@@ -16,21 +16,15 @@ function loadItems() {
             const li = document.createElement('li');
             li.classList.add(item.type === 'Found' ? 'found-item' : 'lost-item');  // Add different styling based on item type
 
-            // Create item content with name and description
             let itemContent = `
                 <strong>${item.name}</strong> - ${item.description} (${item.type})
             `;
-
-            // Add the "Claimed" tag immediately after the item name if claimed
+            
             if (item.claimed) {
                 const claimedTag = document.createElement('span');
                 claimedTag.textContent = ' - Claimed';
-                claimedTag.style.color = 'black'; // Customize the color
-                li.innerHTML = `<strong>${item.name}</strong>`;
-                li.innerHTML += ` - ${item.description} (${item.type})`; // Append description after name
-                li.appendChild(claimedTag); // Add the claimed tag right after
-            } else {
-                li.innerHTML = itemContent; // Default behavior if not claimed
+                claimedTag.style.color = 'black';
+                li.appendChild(claimedTag);
             }
 
             // Display the image if present (if item has an image)
