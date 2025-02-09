@@ -1,0 +1,120 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color:  #061f3f ;
+    background-image: url('download.png'); /* Path to your logo image */
+    background-size: cover; /* Resize the background image to cover the whole page */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    min-height: 100vh; /* Make sure the background covers the full height of the viewport */
+}
+ {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #061f3f;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+.logo-container {
+    margin-bottom: 10px;
+}
+.college-logo{
+    max-width: 300px;
+     border-radius: 30px;
+}
+.college-details h2{
+    text-align: right;
+    font-size:2rem;
+    margin-bottom: 5px;
+}
+.college-details p{
+    text-align: right;
+    font-size: 1rem;
+    font-style: italic;
+}
+main {
+    padding: 20px;
+}
+
+h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.form-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.items-list ul {
+    list-style-type: none;
+}
+
+.items-list li {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.found-item {
+    background-color: #d4edda; /* Green background for found items */
+}
+
+.claimed {
+    background-color: #c3e6cb; /* Lighter green for claimed items */
+    text-decoration: line-through; /* Strike-through to indicate claimed items */
+}
+
+/* Styling for item images */
+.item-image {
+    max-width: 200px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #061f3f;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}

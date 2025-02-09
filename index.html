@@ -1,27 +1,67 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Login</title>
-    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> LostNFound</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <form>
-        <h1>LOGIN</h1>
-        <div class=" textBox">
-            <input type=" text " placeholder="Username ">
-        </div>
-        <div class="textBo">
-            <input type="password " placeholder="password ">
-        </div>
-        <input type="submit " value="                          Login " class="loginBtn ">
-        <div class="signup ">
-            Dont have an account ?
-            </br>
-            <a href="# ">Sign Up </a>
-        </div>
-    </form>
-</body>
 
+    <header>
+        <div class="header-container">
+        <img src=https://dca.cusat.ac.in/cybercube18/assets/images/cusat.png alt="CUSAT" class="college-logo">
+        <h1>CUSAT: Lost & Found</h1>
+    </div>
+    </header>
+
+    <main>
+         <section class="form-section">
+            <h2>Report a Lost or Found Item</h2>
+            <form id="lostFoundForm" enctype="multipart/form-data">
+                <label for="itemName">Item Name:</label>
+                <input type="text" id="itemName" required><br><br>
+
+                <label for="itemDescription">Item Description:</label>
+                <textarea id="itemDescription" required></textarea><br><br>
+
+                <label for="itemType">Is it Lost or Found?</label>
+                <select id="itemType" required>
+                    <option value="Lost">Lost</option>
+                    <option value="Found">Found</option>
+                </select><br><br>
+
+                <!-- New Checkbox for Marking Item as Claimed -->
+                <label for="claimed">Mark as Claimed (for found items):</label>
+                <input type="checkbox" id="claimed"><br><br>
+
+                <!-- New Image Upload Input -->
+                <label for="itemImage">Upload Image of Item (Optional):</label>
+                <input type="file" id="itemImage" accept="image/*"><br><br>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <section class="items-list">
+            <h2>Reported Items</h2>
+            <ul id="itemList">
+                <!-- Lost and Found items will appear here -->
+            </ul>
+        </section>
+        <section class="college-details">
+            <h2>For Enquiry:</h2>
+            <p><strong>College name:</strong><b>CUSAT</b></p>
+            <p><strong>Address:</strong>Kochi</p>
+            <p><strong>Contact:</strong>8374927623</p>
+            <p><strong>Email:</strong>abcdef@gmail.com</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 College Lost & Found. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
